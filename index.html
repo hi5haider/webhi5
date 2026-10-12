@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0b0912">
+  <meta name="description" content="اكتشف الإلكترونيات الذكية والأجهزة المنزلية والإكسسوارات في ڤولت هاوس.">
+  <title>ڤولت هاوس — تقنية لحياة أفضل</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Tajawal:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="h.css">
+  <!-- مكتبة Supabase JS -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+  <div class="ambient ambient-one"></div>
+  <div class="ambient ambient-two"></div>
+  <header class="site-header glass">
+    <a class="brand" href="#" aria-label="Volt House home">
+      <span class="brand-mark" id="brand-mark">V</span>
+      <span id="brand-name">Volt House</span>
+    </a>
+    <nav class="main-nav" aria-label="Main navigation">
+      <a href="#shop" data-i18n="navShop">Shop</a>
+      <a href="#categories" data-i18n="navCategories">Categories</a>
+      <a href="#about" data-i18n="navAbout">About</a>
+    </nav>
+    <div class="header-actions">
+      <button class="icon-button" id="language-toggle" type="button" aria-label="Switch to English">English</button>
+      <button class="icon-button theme-button" id="theme-toggle" type="button" aria-label="Toggle light mode"><span id="theme-icon">☼</span></button>
+      <button class="cart-button" id="cart-open" type="button"><span data-i18n="cart">السلة</span><span class="cart-count" id="cart-count">0</span></button>
+      <button class="icon-button admin-shortcut" id="admin-open" type="button" aria-label="Admin panel">⌘</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="about">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="live-dot"></span><span data-i18n="eyebrow">THE FUTURE, IN YOUR HANDS</span></div>
+        <h1 data-i18n="heroTitle">Make room for<br><span>better living.</span></h1>
+        <p data-i18n="heroText">Thoughtfully picked tech and everyday essentials, designed to make life feel a little more effortless.</p>
+        <a class="primary-button" href="#shop"><span data-i18n="explore">Explore collection</span><span class="button-arrow">↗</span></a>
+        <div class="hero-proof"><div class="avatar-stack"><span>J</span><span>M</span><span>A</span><span>+</span></div><span data-i18n="trusted">Loved by 2,400+ happy customers</span></div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-orbit orbit-one"></div><div class="hero-orbit orbit-two"></div>
+        <div class="hero-glow"></div>
+        <img class="hero-image" src="https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?auto=format&fit=crop&w=1000&q=85" alt="Modern home entertainment setup">
+        <div class="floating-note note-top"><span class="note-icon">✦</span><span><strong data-i18n="curated">Curated tech</strong><small data-i18n="madeForLife">Made for real life</small></span></div>
+        <div class="floating-note note-bottom"><span class="rating-stars">★★★★★</span><strong>4.9 <small data-i18n="rating">customer rating</small></strong></div>
+        <span class="visual-caption">01 / 04 &nbsp; — &nbsp; DISCOVER WHAT'S NEXT</span>
+      </div>
+      <div class="hero-index"><span>01</span><span class="index-line"></span><span>04</span></div>
+    </section>
+
+    <section class="benefits glass" aria-label="Store benefits">
+      <div class="benefit"><span class="benefit-icon">◇</span><span><strong data-i18n="benefitOne">Thoughtfully picked</strong><small data-i18n="benefitOneText">Only the good stuff</small></span></div>
+      <div class="benefit"><span class="benefit-icon">⌁</span><span><strong data-i18n="benefitTwo">Fast delivery</strong><small data-i18n="benefitTwoText">At your doorstep, quick</small></span></div>
+      <div class="benefit"><span class="benefit-icon">↺</span><span><strong data-i18n="benefitThree">Easy returns</strong><small data-i18n="benefitThreeText">30 days, no stress</small></span></div>
+      <div class="benefit"><span class="benefit-icon">♡</span><span><strong data-i18n="benefitFour">Here for you</strong><small data-i18n="benefitFourText">Real people, real help</small></span></div>
+    </section>
+
+    <section class="shop-section" id="shop">
+      <div class="section-heading">
+        <div><div class="eyebrow muted-eyebrow"><span data-i18n="shopEyebrow">GOOD THINGS, RIGHT THIS WAY</span></div><h2 data-i18n="shopTitle">Find your next <span>favorite.</span></h2></div>
+        <label class="search-box"><span>⌕</span><input id="product-search" type="search" data-i18n-placeholder="search" placeholder="Search anything..."></label>
+      </div>
+      <div class="category-row" id="categories"><div class="category-list" id="category-list"></div><button class="text-button" id="admin-link" type="button"><span data-i18n="manageProducts">Manage products</span> ↗</button></div>
+      <div class="product-grid" id="product-grid" aria-live="polite"></div>
+      <div class="empty-state hidden" id="empty-state"><span>⌕</span><h3 data-i18n="nothingFound">Nothing found just yet</h3><p data-i18n="tryAnother">Try another search or category.</p></div>
+    </section>
+
+    <section class="newsletter glass">
+      <div><div class="eyebrow"><span data-i18n="newsletterEyebrow">A LITTLE SOMETHING EXTRA</span></div><h2 data-i18n="newsletterTitle">Good tech. <span>Good inbox.</span></h2><p data-i18n="newsletterText">Get the occasional good thing: new drops, thoughtful picks, and offers worth opening.</p></div>
+      <form class="newsletter-form" id="newsletter-form"><label class="sr-only" for="newsletter-email" data-i18n="email">Your email address</label><input id="newsletter-email" type="email" required data-i18n-placeholder="email" placeholder="Your email address"><button class="primary-button" type="submit" data-i18n="subscribe">Count me in ↗</button><small data-i18n="newsletterFine">No noise, ever. Unsubscribe whenever.</small></form>
+    </section>
+  </main>
+
+  <footer class="site-footer"><a class="brand" href="#"><span class="brand-mark">V</span><span id="footer-brand-name">Volt House</span></a><span data-i18n="footerText">A little more joy in every day.</span><span>© <span id="current-year"></span> <span id="footer-copy-name">Volt House</span></span></footer>
+
+  <div class="overlay hidden" id="cart-overlay"></div>
+  <aside class="side-panel glass" id="cart-panel" aria-label="Shopping cart" aria-hidden="true"><div class="panel-header"><div><div class="eyebrow muted-eyebrow" data-i18n="yourBag">YOUR LITTLE BAG</div><h2><span data-i18n="cart">Cart</span> <span class="panel-count" id="panel-cart-count">(0)</span></h2></div><button class="icon-button close-button" data-close="cart" type="button" aria-label="Close cart">×</button></div><div class="cart-items" id="cart-items"></div><div class="cart-footer"><div class="subtotal"><span data-i18n="subtotal">Subtotal</span><strong id="cart-subtotal">$0</strong></div><p data-i18n="shippingNote">Shipping and any applicable taxes are calculated at checkout.</p><button class="primary-button checkout-button" id="checkout-open" type="button" data-i18n="checkout">Continue to checkout ↗</button></div></aside>
+
+  <div class="modal-backdrop hidden" id="modal-backdrop"></div>
+  <section class="modal glass hidden" id="login-modal" role="dialog" aria-modal="true" aria-labelledby="login-title">
+    <button class="icon-button modal-close" data-close-modal type="button" aria-label="Close">×</button>
+    <div class="modal-emblem">✳</div><div class="eyebrow muted-eyebrow" data-i18n="adminAccess">STORE MANAGEMENT</div><h2 id="login-title" data-i18n="welcomeBack">Welcome back.</h2><p data-i18n="loginHint">Enter your admin access code to continue.</p>
+    <form id="login-form"><label for="admin-code" data-i18n="accessCode">Password</label><input id="admin-code" type="password" autocomplete="current-password" required><div class="form-error hidden" id="login-error" data-i18n="wrongCode">That password didn't work. Please try again.</div><button class="primary-button full-button" type="submit" data-i18n="signIn">Sign in ↗</button></form>
+  </section>
+  <section class="modal glass hidden" id="checkout-modal" role="dialog" aria-modal="true" aria-labelledby="checkout-title">
+    <button class="icon-button modal-close" data-close-modal type="button" aria-label="Close">×</button>
+    <div class="modal-emblem">✳</div><div class="eyebrow muted-eyebrow" data-i18n="checkout">Continue to checkout ↗</div><h2 id="checkout-title" data-i18n="checkoutTitle">Almost yours.</h2><p data-i18n="checkoutText">Add your contact details to place your order.</p>
+    <form id="checkout-form"><label for="checkout-name" data-i18n="checkoutName">Your name</label><input id="checkout-name" name="name" required maxlength="100" autocomplete="name">
+      <label for="checkout-phone" style="margin-top:12px" data-i18n="phone">Phone number</label><input id="checkout-phone" name="phone" required maxlength="30" autocomplete="tel">
+      <label for="checkout-address" style="margin-top:12px" data-i18n="address">Delivery address</label><textarea id="checkout-address" name="address" required maxlength="300"></textarea>
+      <div class="form-error hidden" id="checkout-error" data-i18n="checkoutRequired">Please add your name, phone number, and delivery address.</div><button class="primary-button full-button" type="submit" data-i18n="placeOrder">Place order</button>
+    </form>
+    <div class="checkout-success hidden" id="checkout-success"><p data-i18n="whatsappNote">WhatsApp will open with your order details ready. Press Send there to complete.</p><div class="receipt-actions"><a class="primary-button full-button" id="whatsapp-link" href="#" target="_blank" rel="noopener" data-i18n="sendWhatsApp">Send order on WhatsApp ↗</a><button class="small-button full-button" id="print-receipt" type="button" data-i18n="printReceipt">Print receipt</button></div><article class="receipt-card" id="receipt-content"></article></div>
+  </section>
+  <section class="modal glass hidden product-detail-modal" id="product-detail-modal" role="dialog" aria-modal="true" aria-labelledby="product-detail-title"></section>
+
+  <section class="admin-panel glass hidden" id="admin-panel" aria-label="Admin dashboard">
+    <div class="admin-header"><div class="admin-title"><span class="brand-mark">V</span><span><span class="eyebrow muted-eyebrow" data-i18n="storeControl">STORE CONTROL</span><strong data-i18n="dashboard">Dashboard</strong></span></div><button class="icon-button close-button" id="admin-close" type="button" aria-label="Close admin">×</button></div>
+    <nav class="admin-tabs"><button class="admin-tab active" data-tab="products" type="button" data-i18n="products">Products</button><button class="admin-tab" data-tab="categories" type="button" data-i18n="categoriesTab">Categories</button><button class="admin-tab" data-tab="orders" type="button" data-i18n="orders">Orders</button><button class="admin-tab" data-tab="settings" type="button" data-i18n="settings">Store settings</button></nav>
+    <div class="admin-content" id="admin-content"></div>
+  </section>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="h.js"></script>
+</body>
+</html>
