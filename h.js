@@ -2,7 +2,7 @@
   "use strict";
 
   // ========== إعدادات SUPABASE ==========
-  const SUPABASE_URL = "sb_publishable_yuRVmCNAoDpzh5gde4kJzw_MFTIuuh7";
+  const SUPABASE_URL = "https://gwdkjgipbbwlaxfokkug.supabase.co";
   const SUPABASE_ANON_KEY = "sb_publishable_yuRVmCNAoDpzh5gde4kJzw_MFTIuuh7";
 
   const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
@@ -176,14 +176,16 @@
       settings = { ...settings, ...savedSettings };
       adminCredential = JSON.parse(localStorage.getItem("volt-house-admin-credential") || "null");
 
-      await Promise.all([fetchProducts(), fetchCategories(), fetchOrders()]);
-
+      bind();
       applyLanguage();
       applySettings();
       renderProducts();
       renderCart();
       $("#current-year").textContent = new Date().getFullYear();
-      bind();
+
+      await Promise.all([fetchProducts(), fetchCategories(), fetchOrders()]);
+
+      applyLanguage();
     }catch(error){
       console.error("Store initialization failed:", error);
       toast("حدث خطأ أثناء تحميل البيانات من Supabase");
