@@ -85,8 +85,8 @@
   <div class="modal-backdrop hidden" id="modal-backdrop"></div>
   <section class="modal glass hidden" id="login-modal" role="dialog" aria-modal="true" aria-labelledby="login-title">
     <button class="icon-button modal-close" data-close-modal type="button" aria-label="Close">×</button>
-    <div class="modal-emblem">✳</div><div class="eyebrow muted-eyebrow" data-i18n="adminAccess">STORE MANAGEMENT</div><h2 id="login-title" data-i18n="welcomeBack">Welcome back.</h2><p data-i18n="loginHint">Enter your admin access code to continue.</p>
-    <form id="login-form"><label for="admin-code" data-i18n="accessCode">Password</label><input id="admin-code" type="password" autocomplete="current-password" required><div class="form-error hidden" id="login-error" data-i18n="wrongCode">That password didn't work. Please try again.</div><button class="primary-button full-button" type="submit" data-i18n="signIn">Sign in ↗</button></form>
+    <div class="modal-emblem">✳</div><div class="eyebrow muted-eyebrow" data-i18n="adminAccess">STORE MANAGEMENT</div><h2 id="login-title" data-i18n="welcomeBack">Welcome back.</h2><p data-i18n="loginHint">Sign in with your Supabase admin account.</p>
+    <form id="login-form"><label for="admin-email" data-i18n="adminEmail">Email address</label><input id="admin-email" type="email" autocomplete="username" required><label for="admin-password" data-i18n="adminPassword">Password</label><input id="admin-password" type="password" autocomplete="current-password" required><div class="form-error hidden" id="login-error"></div><button class="primary-button full-button" type="submit" data-i18n="signIn">Sign in ↗</button></form>
   </section>
   <section class="modal glass hidden" id="checkout-modal" role="dialog" aria-modal="true" aria-labelledby="checkout-title">
     <button class="icon-button modal-close" data-close-modal type="button" aria-label="Close">×</button>
