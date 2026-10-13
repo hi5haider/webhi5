@@ -7,7 +7,6 @@
 
   const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-  const ADMIN_CODE = "121212";
   const $ = (selector, root = document) => root.querySelector(selector);
   const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
 
@@ -18,11 +17,11 @@
       benefitOne:"Thoughtfully picked",benefitOneText:"Only the good stuff",benefitTwo:"Fast delivery",benefitTwoText:"At your doorstep, quick",benefitThree:"Easy returns",benefitThreeText:"30 days, no stress",benefitFour:"Here for you",benefitFourText:"Real people, real help",
       shopEyebrow:"GOOD THINGS, RIGHT THIS WAY",shopTitle:'Find your next <span>favorite.</span>',search:"Search anything...",manageProducts:"Manage products",nothingFound:"Nothing found just yet",tryAnother:"Try another search or category.",
       newsletterEyebrow:"A LITTLE SOMETHING EXTRA",newsletterTitle:'Good tech. <span>Good inbox.</span>',newsletterText:"Get the occasional good thing: new drops, thoughtful picks, and offers worth opening.",email:"Your email address",subscribe:"Count me in ↗",newsletterFine:"No noise, ever. Unsubscribe whenever.",footerText:"A little more joy in every day.",
-      yourBag:"YOUR LITTLE BAG",subtotal:"Subtotal",shippingNote:"Shipping and any applicable taxes are calculated at checkout.",checkout:"Continue to checkout ↗",adminAccess:"STORE MANAGEMENT",welcomeBack:"Welcome back.",loginHint:"Enter your admin password to continue.",
-      accessCode:"Password",switchToArabic:"Switch to Arabic",switchToEnglish:"Switch to English",wrongCode:"That password didn't work. Please try again.",signIn:"Sign in ↗",storeControl:"STORE CONTROL",dashboard:"Dashboard",products:"Products",orders:"Orders",settings:"Store settings",addProduct:"+ Add product",
+      yourBag:"YOUR LITTLE BAG",subtotal:"Subtotal",shippingNote:"Shipping and any applicable taxes are calculated at checkout.",checkout:"Continue to checkout ↗",adminAccess:"STORE MANAGEMENT",welcomeBack:"Welcome back.",loginHint:"Sign in with your Supabase admin account.",
+      adminEmail:"Email address",adminPassword:"Password",adminSignInError:"Could not sign in. Check your email and password, then try again.",adminRoleRequired:"This account is not authorized to manage the store.",storeLoadError:"An error occurred while loading store data.",switchToArabic:"Switch to Arabic",switchToEnglish:"Switch to English",signIn:"Sign in ↗",storeControl:"STORE CONTROL",dashboard:"Dashboard",products:"Products",orders:"Orders",settings:"Store settings",addProduct:"+ Add product",
       editProduct:"Edit product",newProduct:"New product",productName:"Product name",nameArabic:"Arabic name (optional)",category:"Category",categoryArabic:"Arabic category (optional)",price:"Price",comparePrice:"Compare-at price (optional)",stock:"Stock quantity",image:"Product image",imageUrl:"Image URL (optional)",description:"Description",descriptionArabic:"Arabic description (optional)",
       saveProduct:"Save product",cancel:"Cancel",uploadHint:"Upload an image, or paste an image URL below. Images are resized and compressed before saving.",product:"Product",stockLabel:"Stock",actions:"Actions",edit:"Edit",delete:"Delete",sale:"Sale",all:"All",storeName:"Store name",storeNameArabic:"Arabic store name",logo:"Store logo",logoHint:"Upload a small square logo (optional).",saveSettings:"Save settings",
-      productDetails:"PRODUCT DETAILS",inStock:"In stock",outOfStock:"Out of stock",currentPassword:"Current password",newPassword:"New password",confirmPassword:"Confirm new password",passwordHint:"Use at least 6 characters.",passwordMismatch:"The new passwords do not match.",wrongCurrentPassword:"The current password is incorrect.",passwordChanged:"Password changed.",changePassword:"Change password",addToCart:"Add to cart",
+      productDetails:"PRODUCT DETAILS",inStock:"In stock",outOfStock:"Out of stock",addToCart:"Add to cart",
       productsTotal:"Products",orderCount:"Orders",inventoryValue:"Inventory value",noProducts:"No products yet.",noOrders:"No orders yet. Customer orders will show up here.",orderSearch:"Search by order number...",noOrderMatches:"No orders match those filters.",fromDate:"From date",toDate:"To date",returnToStock:"Return to stock",returnedToStock:"Stock restored",inventoryRestored:"Returned items have been restored to stock.",order:"Order",customer:"Customer",date:"Date",total:"Total",status:"Status",statusCompleted:"Completed",statusOutForDelivery:"Out for Delivery",statusReturned:"Returned",orderStatusUpdated:"Order status updated.",
       categoriesTab:"Categories",addCategory:"Add category",categoryName:"Category name",categoryNameArabic:"Arabic name (optional)",saveCategory:"Save category",categoryCreated:"Category created.",categoryExists:"A category with this name already exists.",categoryInUse:"Remove or reassign products in this category before deleting it.",categoryDeleted:"Category deleted.",whatsappFallback:"Your order was saved. Open WhatsApp to send it to the store.",sendWhatsApp:"Send order on WhatsApp ↗",whatsappNote:"Your order is complete. Send the details to the store on WhatsApp if you wish.",printReceipt:"Print receipt",receiptTitle:"ORDER RECEIPT",receiptNumber:"Receipt",receiptDate:"Date",receiptCustomer:"Customer",receiptPhone:"Phone",receiptAddress:"Delivery address",receiptItem:"Item",receiptQuantity:"Qty",receiptTotal:"Total paid",receiptThanks:"Thank you for shopping with us.",
       whatsappNumber:"WhatsApp phone number",whatsappNumberHint:"Include the country code, or enter an Iraqi mobile number starting with 07.",invalidWhatsAppNumber:"Enter a valid phone number with its country code.",
@@ -37,11 +36,11 @@
       benefitOne:"اختيارات بعناية",benefitOneText:"الأفضل فقط",benefitTwo:"توصيل سريع",benefitTwoText:"حتى باب منزلك",benefitThree:"استرجاع سهل",benefitThreeText:"٣٠ يوماً بكل سهولة",benefitFour:"نحن هنا لأجلك",benefitFourText:"فريق حقيقي، مساعدة حقيقية",
       shopEyebrow:"اختيارات رائعة بانتظارك",shopTitle:'اعثر على <span>منتجك المفضل.</span>',search:"ابحث عن أي شيء...",manageProducts:"إدارة المنتجات",nothingFound:"لم نعثر على نتائج",tryAnother:"جرّب بحثاً أو تصنيفاً آخر.",
       newsletterEyebrow:"شيء جميل إضافي",newsletterTitle:'تقنية رائعة. <span>وبريد ممتع.</span>',newsletterText:"اكتشف أحدث المنتجات والاختيارات المميزة والعروض التي تستحق وقتك.",email:"بريدك الإلكتروني",subscribe:"سجّلني ↗",newsletterFine:"بلا رسائل مزعجة. ألغِ الاشتراك متى شئت.",footerText:"متعة أكثر في كل يوم.",
-      yourBag:"حقيبتك الصغيرة",subtotal:"المجموع الفرعي",shippingNote:"تُحسب تكاليف الشحن والضرائب عند إتمام الطلب.",checkout:"تابع لإتمام الطلب ↗",adminAccess:"إدارة المتجر",welcomeBack:"أهلاً بعودتك.",loginHint:"أدخل كلمة مرور الإدارة للمتابعة.",
-      accessCode:"كلمة المرور",switchToArabic:"التبديل إلى العربية",switchToEnglish:"التبديل إلى الإنجليزية",wrongCode:"كلمة المرور غير صحيحة. حاول مرة أخرى.",signIn:"تسجيل الدخول ↗",storeControl:"التحكم بالمتجر",dashboard:"لوحة الإدارة",products:"المنتجات",orders:"الطلبات",settings:"إعدادات المتجر",addProduct:"+ أضف منتجاً",
+      yourBag:"حقيبتك الصغيرة",subtotal:"المجموع الفرعي",shippingNote:"تُحسب تكاليف الشحن والضرائب عند إتمام الطلب.",checkout:"تابع لإتمام الطلب ↗",adminAccess:"إدارة المتجر",welcomeBack:"أهلاً بعودتك.",loginHint:"سجّل الدخول باستخدام حساب إدارة Supabase.",
+      adminEmail:"البريد الإلكتروني",adminPassword:"كلمة المرور",adminSignInError:"تعذر تسجيل الدخول. تحقق من البريد الإلكتروني وكلمة المرور ثم حاول مجدداً.",adminRoleRequired:"هذا الحساب غير مخوّل لإدارة المتجر.",storeLoadError:"حدث خطأ أثناء تحميل بيانات المتجر.",switchToArabic:"التبديل إلى العربية",switchToEnglish:"التبديل إلى الإنجليزية",signIn:"تسجيل الدخول ↗",storeControl:"التحكم بالمتجر",dashboard:"لوحة الإدارة",products:"المنتجات",orders:"الطلبات",settings:"إعدادات المتجر",addProduct:"+ أضف منتجاً",
       editProduct:"تعديل المنتج",newProduct:"منتج جديد",productName:"اسم المنتج",nameArabic:"الاسم بالعربية",category:"التصنيف",categoryArabic:"التصنيف بالعربية",price:"السعر",comparePrice:"السعر قبل الخصم (اختياري)",stock:"الكمية المتوفرة",image:"صورة المنتج",imageUrl:"رابط الصورة (اختياري)",description:"الوصف",descriptionArabic:"الوصف بالعربية",
       saveProduct:"حفظ المنتج",cancel:"إلغاء",uploadHint:"ارفع صورة أو ألصق رابط الصورة بالأسفل. سيتم تغيير حجم الصور وضغطها قبل الحفظ.",product:"المنتج",stockLabel:"المخزون",actions:"الإجراءات",edit:"تعديل",delete:"حذف",sale:"تخفيض",all:"الكل",storeName:"اسم المتجر",storeNameArabic:"اسم المتجر بالعربية",logo:"شعار المتجر",logoHint:"ارفع شعاراً مربعاً صغيراً (اختياري).",saveSettings:"حفظ الإعدادات",
-      productDetails:"تفاصيل المنتج",inStock:"متوفر",outOfStock:"غير متوفر",currentPassword:"كلمة المرور الحالية",newPassword:"كلمة المرور الجديدة",confirmPassword:"تأكيد كلمة المرور الجديدة",passwordHint:"استخدم ٦ أحرف على الأقل.",passwordMismatch:"كلمتا المرور الجديدتان غير متطابقتين.",wrongCurrentPassword:"كلمة المرور الحالية غير صحيحة.",passwordChanged:"تم تغيير كلمة المرور.",changePassword:"تغيير كلمة المرور",addToCart:"أضف إلى السلة",
+      productDetails:"تفاصيل المنتج",inStock:"متوفر",outOfStock:"غير متوفر",addToCart:"أضف إلى السلة",
       productsTotal:"المنتجات",orderCount:"الطلبات",inventoryValue:"قيمة المخزون",noProducts:"لا توجد منتجات بعد.",noOrders:"لا توجد طلبات بعد. ستظهر طلبات العملاء هنا.",orderSearch:"ابحث برقم الطلب...",noOrderMatches:"لا توجد طلبات تطابق عوامل التصفية.",fromDate:"من تاريخ",toDate:"إلى تاريخ",returnToStock:"إرجاع للمخزون",returnedToStock:"أُعيد للمخزون",inventoryRestored:"تمت إعادة المنتجات المرتجعة إلى المخزون.",order:"الطلب",customer:"العميل",date:"التاريخ",total:"الإجمالي",status:"الحالة",statusCompleted:"مكتمل",statusOutForDelivery:"قيد التوصيل",statusReturned:"مرتجع",orderStatusUpdated:"تم تحديث حالة الطلب.",
       categoriesTab:"التصنيفات",addCategory:"إضافة تصنيف",categoryName:"اسم التصنيف",categoryNameArabic:"الاسم بالعربية (اختياري)",saveCategory:"حفظ التصنيف",categoryCreated:"تمت إضافة التصنيف.",categoryExists:"يوجد تصنيف بهذا الاسم مسبقاً.",categoryInUse:"انقل المنتجات في هذا التصنيف أو احذفها أولاً.",categoryDeleted:"تم حذف التصنيف.",whatsappFallback:"تم حفظ طلبك. افتح واتساب لإرساله إلى المتجر.",sendWhatsApp:"إرسال الطلب عبر واتساب ↗",whatsappNote:"اكتمل طلبك. يمكنك إرسال التفاصيل إلى المتجر عبر واتساب إذا رغبت.",printReceipt:"طباعة الإيصال",receiptTitle:"إيصال الطلب",receiptNumber:"رقم الإيصال",receiptDate:"التاريخ",receiptCustomer:"العميل",receiptPhone:"الهاتف",receiptAddress:"عنوان التوصيل",receiptItem:"المنتج",receiptQuantity:"الكمية",receiptTotal:"الإجمالي المدفوع",receiptThanks:"شكراً لتسوقك معنا.",
       whatsappNumber:"رقم واتساب",whatsappNumberHint:"أدخل رقم الهاتف مع رمز الدولة، أو رقم موبايل عراقي يبدأ بـ 07.",invalidWhatsAppNumber:"أدخل رقم هاتف صحيحاً مع رمز الدولة.",
@@ -52,7 +51,7 @@
     }
   };
 
-  let products=[],orders=[],categories=[],settings={name:"Volt House",nameAr:"ڤولت هاوس",logo:"",whatsappNumber:"07862250964"},adminCredential=null,cart=[];
+  let products=[],orders=[],categories=[],settings={name:"Volt House",nameAr:"ڤولت هاوس",logo:"",whatsappNumber:"07862250964"},cart=[];
   let language=localStorage.getItem("volt-house-language")||"ar",activeCategory="all",editingId=null,orderSearchTerm="",orderDateFrom="",orderDateTo="",toastTimer;
 
   try {
@@ -83,16 +82,6 @@
     if(number.startsWith("0"))number=`964${number.slice(1)}`;
     if(!/^\d{8,15}$/.test(number))throw new Error(t("invalidWhatsAppNumber"));
     return number;
-  }
-
-  async function passwordHash(password,salt){
-    const digest=await crypto.subtle.digest("SHA-256",new TextEncoder().encode(`${salt}:${password}`));
-    return [...new Uint8Array(digest)].map(value=>value.toString(16).padStart(2,"0")).join("");
-  }
-
-  async function verifyAdminPassword(password){
-    if(!adminCredential)return password===ADMIN_CODE;
-    return await passwordHash(password,adminCredential.salt)===adminCredential.hash;
   }
 
   function report(error){console.error("Store operation failed:",error);toast(error.message||"Something went wrong. Please try again.");}
@@ -174,8 +163,6 @@
     try{
       const savedSettings = JSON.parse(localStorage.getItem("volt-house-settings") || "{}");
       settings = { ...settings, ...savedSettings };
-      adminCredential = JSON.parse(localStorage.getItem("volt-house-admin-credential") || "null");
-
       bind();
       applyLanguage();
       applySettings();
@@ -183,12 +170,12 @@
       renderCart();
       $("#current-year").textContent = new Date().getFullYear();
 
-      await Promise.all([fetchProducts(), fetchCategories(), fetchOrders()]);
+      await Promise.all([fetchProducts(), fetchCategories()]);
 
       applyLanguage();
     }catch(error){
       console.error("Store initialization failed:", error);
-      toast("حدث خطأ أثناء تحميل البيانات من Supabase");
+      toast(t("storeLoadError"));
     }
   }
 
@@ -276,7 +263,7 @@
   function toast(message){const element=$("#toast");element.textContent=message;element.classList.add("visible");clearTimeout(toastTimer);toastTimer=setTimeout(()=>element.classList.remove("visible"),2800);}
   function openCart(){$("#cart-overlay").classList.remove("hidden");$("#cart-panel").classList.add("open");$("#cart-panel").setAttribute("aria-hidden","false");}
   function closeCart(){$("#cart-overlay").classList.add("hidden");$("#cart-panel").classList.remove("open");$("#cart-panel").setAttribute("aria-hidden","true");}
-  function openLogin(){$("#modal-backdrop").classList.remove("hidden");$("#login-modal").classList.remove("hidden");$("#checkout-modal").classList.add("hidden");$("#login-error").classList.add("hidden");$("#admin-code").value="";$("#admin-code").focus();}
+  function openLogin(){$("#modal-backdrop").classList.remove("hidden");$("#login-modal").classList.remove("hidden");$("#checkout-modal").classList.add("hidden");$("#login-error").classList.add("hidden");$("#admin-email").value="";$("#admin-password").value="";$("#admin-email").focus();}
   function closeModal(){$("#modal-backdrop").classList.add("hidden");$("#login-modal").classList.add("hidden");$("#checkout-modal").classList.add("hidden");$("#product-detail-modal").classList.add("hidden");}
   function openCheckout(){$("#modal-backdrop").classList.remove("hidden");$("#login-modal").classList.add("hidden");$("#checkout-success").classList.add("hidden");$("#checkout-form").classList.remove("hidden");$("#checkout-form").reset();$("#whatsapp-link").href="#";$("#receipt-content").innerHTML="";$("#checkout-modal").classList.remove("hidden");}
 
@@ -393,12 +380,7 @@
       <div class="form-field"><label for="store-name-ar">${t("storeNameArabic")}</label><input id="store-name-ar" name="nameAr" maxlength="60" value="${esc(settings.nameAr||"")}"></div>
       <div class="form-field"><label for="store-whatsapp">${t("whatsappNumber")} *</label><input id="store-whatsapp" name="whatsappNumber" type="tel" inputmode="tel" autocomplete="tel" maxlength="20" required value="${esc(settings.whatsappNumber||"07702556311")}"><span class="upload-hint">${t("whatsappNumberHint")}</span></div>
       <div class="form-field full"><label for="store-logo">${t("logo")}</label><input id="store-logo" name="logoFile" type="file" accept="image/*"><span class="upload-hint">${t("logoHint")}</span></div></div>
-      <div class="form-actions"><button class="primary-button" type="submit">${t("saveSettings")}</button></div></form>
-      <form class="admin-form password-form" id="password-form"><h4>${t("changePassword")}</h4><div class="form-grid">
-      <div class="form-field full"><label for="current-password">${t("currentPassword")} *</label><input id="current-password" name="currentPassword" type="password" autocomplete="current-password" required></div>
-      <div class="form-field"><label for="new-password">${t("newPassword")} *</label><input id="new-password" name="newPassword" type="password" autocomplete="new-password" minlength="6" required><span class="upload-hint">${t("passwordHint")}</span></div>
-      <div class="form-field"><label for="confirm-password">${t("confirmPassword")} *</label><input id="confirm-password" name="confirmPassword" type="password" autocomplete="new-password" minlength="6" required></div></div>
-      <div class="form-actions"><button class="primary-button" type="submit">${t("changePassword")}</button></div></form>`;
+      <div class="form-actions"><button class="primary-button" type="submit">${t("saveSettings")}</button></div></form>`;
   }
 
   function bind(){
@@ -410,12 +392,28 @@
 
     $("#login-form").addEventListener("submit",async event=>{
       event.preventDefault();
+      const errorMessage=$("#login-error");
+      errorMessage.classList.add("hidden");
       try{
-        if(!await verifyAdminPassword($("#admin-code").value)){
-          $("#login-error").classList.remove("hidden");$("#admin-code").select();return;
+        const { data, error } = await supabase.auth.signInWithPassword({
+          email: $("#admin-email").value.trim(),
+          password: $("#admin-password").value
+        });
+        if(error) throw error;
+        if(data.user?.app_metadata?.role!=="admin"){
+          const { error: signOutError } = await supabase.auth.signOut();
+          if(signOutError) throw signOutError;
+          errorMessage.textContent=t("adminRoleRequired");
+          errorMessage.classList.remove("hidden");
+          return;
         }
+        await fetchOrders();
         closeModal();$("#admin-panel").classList.remove("hidden");renderTab("products");
-      }catch(error){report(error);}
+      }catch(error){
+        console.error("Admin sign-in failed:",error);
+        errorMessage.textContent=error.message||t("adminSignInError");
+        errorMessage.classList.remove("hidden");
+      }
     });
 
     $("#admin-close").addEventListener("click",()=>$("#admin-panel").classList.add("hidden"));     $$(".admin-tab").forEach(button=>button.addEventListener("click",()=>renderTab(button.dataset.tab)));
@@ -646,18 +644,6 @@
         }catch(error){report(error);}
       }
 
-      if(form.id==="password-form"){
-        event.preventDefault();
-        const data=new FormData(form),currentPassword=String(data.get("currentPassword")||""),newPassword=String(data.get("newPassword")||"");
-        try{
-          if(!await verifyAdminPassword(currentPassword))return toast(t("wrongCurrentPassword"));
-          if(newPassword!==String(data.get("confirmPassword")||""))return toast(t("passwordMismatch"));
-          const salt=[...crypto.getRandomValues(new Uint8Array(16))].map(value=>value.toString(16).padStart(2,"0")).join("");
-          const credential={salt,hash:await passwordHash(newPassword,salt)};
-          localStorage.setItem("volt-house-admin-credential", JSON.stringify(credential));
-          adminCredential=credential;form.reset();toast(t("passwordChanged"));
-        }catch(error){report(error);}
-      }
     });
 
     document.addEventListener("keydown",event=>{if(event.key==="Escape"){closeCart();closeModal();$("#admin-panel").classList.add("hidden");}});
