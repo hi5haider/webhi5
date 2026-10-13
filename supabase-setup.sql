@@ -3,7 +3,9 @@
 --
 -- Public visitors can read products/categories and submit orders. Order details and
 -- all catalog/order mutations require a trusted JWT app_metadata role of "admin".
--- Never assign this role from browser code or user-editable user_metadata.
+-- Before using the admin panel, create its user in Supabase Auth and assign the
+-- app_metadata role through a trusted server-side Admin API call. Never assign this
+-- role from browser code or user-editable user_metadata.
 
 create table if not exists public.categories (
   id uuid primary key default gen_random_uuid(),
